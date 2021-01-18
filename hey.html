@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Pagination</title>
+        <link rel="stylesheet" type="text/css" href="style.css"></head>
+    </head>
+    <body>
+
+        <h2 align="center">Courses</h2>
+        <div>
+            <Label>Search</label>:<input type="text" name="search_box" id="search_box" class="form-control" placeholder="Type your search query here"/>
+                
+        </div>
+                <br />
+        <div id="rows"></div>
+
+    <br />
+    <br />
+ 
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript">
+        var rows_per_pages=5;
+        var total_rows;
+        var number_of_pages;
+        $(document).ready(function()
+{
+
+    getPage(1);
+     function getPage(page,substr='')
+        {
+          $('#rows').html('');
+          var page=parseInt(page);
+         
+          $.post('hoho.php',{
+    page: page,
+    substr: substr
+  },function(data)
+          { 
+            $('#rows').html(data);
+          }
+          );
+         
+}
+$(document).on('click', '.page-link', function(){
+            var page=$(this).attr("id");
+            var substr= $('#search_box').val();
+            getPage(page,substr);
+    });
+    $('#search_box').keyup(function(){
+
+      var query = $('#search_box').val();
+      var x=new String(query)
+      if(x.length>=3){
+        getPage(1, query);
+        
+      }else if(x.length==0)
+      getPage(1);
+     
+    });
+        }
+    
+
+        );        
+        </script>
+    </body>
+</html>
