@@ -1,0 +1,2 @@
+# Pagination-and-search-using-AJAX
+Instead of clicking on the search button, you should start searching automatically after typing 3 characters.Instead of the load more button, use page number, previous and next like the following image.The search results should also be paginated meaning that only 5 entries should appear and after clicking load more will load the next page of the search results.The search should also ignore the spaces, so for example if a course is called database systems and I wrote ‘databasesystems’ it should be returned in the results.
